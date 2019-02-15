@@ -2,18 +2,38 @@
 int wordCount = 0
 int lineCount = 0
 int numRepeatedWords = 0
+def userInput =''
+def theText = ""
+def greeting = "Enter the word \"done\" when complete \nEnter Your Text:"
+
 
 
 Map doublesMap = [:]
 
 
-def readln = javax.swing.JOptionPane.&showInputDialog
-def theText = readln 'Enter Your Text'
+/*def readln = javax.swing.JOptionPane.&showInputDialog
+def theText = readln 'Enter Your Text'*/
 
+    while (userInput != 'done')
+{
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in))
 
-/*BufferedReader br = new BufferedReader(new InputStreamReader(System.in))
-println "Enter Your Text:"
-def theText = br.readLine()*/
+    if(greeting != "")
+    {
+        println greeting
+        greeting = ""
+    }
+
+    userInput = br.readLine()
+
+    if(userInput != 'done')
+    {
+        theText = theText + "\n " + userInput
+        lineCount ++
+    }
+
+}
+
 
 
 def splitText = theText.split()
@@ -41,6 +61,8 @@ wordCount = splitText.size()
 numRepeatedWords = doublesMap.size()
 
 println "your input ${theText}"
+
+println "number of lines ${lineCount}"
 
 println "The total number of words ${wordCount}"
 
